@@ -1,28 +1,50 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <h1>World's Fires Tracker</h1>
+    <Days :counter="counter"> </Days>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  import Days from './components/Days.vue'
+  import axios from 'axios'
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  export default {
+    components: {
+      Days
+    },
+    data() {
+      return {
+        datas: [],
+        filterDatas: [],
+        selectedDays: [],
+        counter: {}
+      }
+    },
+    mounted() {
+      axios
+        .get('https://jsonkeeper.com/b/8W8M')
+        .then(res => {
+          this.datas = res.data;
+          this.datas.map(fire => {
+            if (!this.selectedDays.includes(fire.date)) {
+              this.counter[fire.date] =  1;
+              return this.selectedDays.push(fire.date)
+            } else {
+              this.counter[fire.date] +=  1;
+            }
+          })
+          console.log(this.counter["2020-08-21"]);
+        })
+    }
+  };
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
+  
+  body {
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+  }
 </style>
