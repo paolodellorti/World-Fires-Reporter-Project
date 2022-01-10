@@ -1,5 +1,5 @@
 <template>
-  <l-map style="height: 350px" :zoom="zoom" :center="center">
+  <l-map style="height: 250px" :zoom="zoom" :center="center">
     <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
     <l-marker v-for="fire, index in filtered" :key="index" :lat-lng="[fire.latitude, fire.longitude]" :icon="icon">
       <l-popup>
@@ -15,7 +15,7 @@
 
 <script>
 import {LMap, LTileLayer, LMarker, LPopup} from 'vue2-leaflet'
-import { icon } from "leaflet";
+import { icon } from "leaflet"
 
 export default {
   name: "Map",
@@ -33,10 +33,9 @@ export default {
   data () {
     return {
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      attribution:
-        '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+      attribution:  '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       zoom: 1,
-      center: [44.417628, 8.886484], //Genova
+      center: [30.831977524010682, 9.488330211327094],
       icon: icon({
         iconUrl: "https://cdn-icons-png.flaticon.com/512/426/426833.png",
         iconSize: [25, 25],
@@ -45,7 +44,7 @@ export default {
     };
   },
   mounted() {
-    console.log(this.$props.filtered);
+    console.log(this.$props.filtered)
   }
 }
 </script>

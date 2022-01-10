@@ -22,6 +22,7 @@
 <script>
 export default {
   name: 'Days',
+  emits: [ "changeFilter" ],
   props: {
     counter: {
       type: Object
@@ -44,9 +45,9 @@ export default {
     },
     toggle() {
       if (event.target.classList.contains("deselected")) {
-        event.target.classList.remove("deselected");
+        event.target.classList.remove("deselected")
       } else {
-        event.target.classList.add("deselected");
+        event.target.classList.add("deselected")
       }
       this.$emit('changeFilter', event.target.getAttribute('data-day'))
     }
