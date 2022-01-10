@@ -63,7 +63,7 @@
     },
     mounted() {
       axios
-        .get('https://jsonkeeper.com/b/8W8M')
+        .get('https://api.npoint.io/445bc75f908957f14039')
         .then(res => {
           this.datas = res.data
           this.filtered = res.data
