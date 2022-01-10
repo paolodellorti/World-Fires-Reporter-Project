@@ -42,9 +42,6 @@ export default {
         iconAnchor: [16, 37]
       }),
     };
-  },
-  mounted() {
-    console.log(this.$props.filtered)
   }
 }
 </script>
