@@ -1,4 +1,4 @@
-# World's Fire Tracker 
+# World's Fires Tracker 
 
 ## Project setup
 ```
