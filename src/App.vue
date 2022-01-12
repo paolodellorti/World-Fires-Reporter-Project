@@ -4,8 +4,8 @@
     <span>Check every 🔥fire in the world between 21 and 28 August 2020.</span>
     <span>Select or deselect the days you prefer by clicking on them.</span>
     <DaysItem :counter="counter" :selectedDays="selectedDays" :key="key" @changeFilter="changeFilter" />
-    <ControllerItem :days="selectedDays.length" :fires="filtered.length" @changeFilter="changeFilter" />
-    <MapItem :filtered="filtered" />
+    <ControllerItem :days="selectedDays.length" :fires="filteredDatas.length" @changeFilter="changeFilter" />
+    <MapItem :filteredDatas="filteredDatas" />
   </div>
 </template>
 
@@ -24,7 +24,7 @@
     data() {
       return {
         datas: [],
-        filtered: [],
+        filteredDatas: [],
         selectedDays: [],
         counter: {},
         key: 0
@@ -48,9 +48,9 @@
       },
       filterData() {
         if (this.selectedDays.length === 8) {
-          this.filtered = this.datas
+          this.filteredDatas = this.datas
         } else {
-          this.filtered = this.datas.filter(fire => {
+          this.filteredDatas = this.datas.filter(fire => {
             if (this.selectedDays.includes(fire.date)) {
               return fire
             }
@@ -66,7 +66,7 @@
         .get('https://api.npoint.io/445bc75f908957f14039')
         .then(res => {
           this.datas = res.data
-          this.filtered = res.data
+          this.filteredDatas = res.data
           this.datas.map(fire => {
             if (!this.selectedDays.includes(fire.date)) {
               this.counter[fire.date] =  1

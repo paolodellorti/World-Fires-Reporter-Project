@@ -1,7 +1,7 @@
 <template>
   <l-map style="height: 250px" :zoom="zoom" :center="center">
     <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-    <l-marker v-for="fire, index in filtered" :key="index" :lat-lng="[fire.latitude, fire.longitude]" :icon="icon">
+    <l-marker v-for="fire, index in filteredDatas" :key="index" :lat-lng="[fire.latitude, fire.longitude]" :icon="icon">
       <l-popup>
         Lat: {{ fire.latitude }}
         <br>
@@ -26,7 +26,7 @@ export default {
     LPopup
   },
   props: {
-    filtered: {
+    filteredDatas: {
       type: Array
     }
   },

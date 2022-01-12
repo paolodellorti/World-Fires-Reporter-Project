@@ -12,21 +12,21 @@
 export default {
     name: "ControllerItem",
     props: {
-        fires: Number,
-        days: Number
+        fires: {
+            type: Number
+        },
+        days: {
+            type: Number
+        }
     },
     methods: {
         deselectAll() {
-        document.querySelectorAll('.bar').forEach(bar => {
-            bar.classList.add("deselected")
-        })
-        this.$emit('changeFilter', 'deselectAll')
+            document.querySelectorAll('.bar').forEach(bar => bar.classList.add("deselected"))
+            this.$emit('changeFilter', 'deselectAll')
         },
         selectAll() {
-        document.querySelectorAll('.bar').forEach(bar => {
-            bar.classList.remove("deselected")
-        })
-        this.$emit('changeFilter', 'selectAll')
+            document.querySelectorAll('.bar').forEach(bar => bar.classList.remove("deselected"))
+            this.$emit('changeFilter', 'selectAll')
         }    
     }
 }
