@@ -53,4 +53,9 @@ export default {
         background-color: #da4f6b;
         transition: all 0.2s;
     }
+    @media (max-width: 830px) {
+        .controller {
+            width: 95%;
+        }
+    }
 </style>

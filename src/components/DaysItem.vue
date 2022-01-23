@@ -152,5 +152,9 @@ export default {
     background-color: rgba(170, 170, 170, 0.5);
     transition: all 0.2s;
   }
-
+  @media (max-width: 830px) {
+    .chart {
+      width: 95%;
+    }
+  }
 </style>
